@@ -58,7 +58,7 @@ const Signup = () => {
                     
                 </div>
                 <div className='signup-right'>
-                    <form onSubmit={submitHandler} className='signup-form'>
+                    <form onSubmit={submitHandler} className='form'>
                         <h1>Create your account</h1>
                         <input required onChange={e => {setFullName(e.target.value)} } type='text' placeholder='Institute Name' />
                         <input required onChange={e => {setEmail(e.target.value)}} type='email' placeholder='Email' />

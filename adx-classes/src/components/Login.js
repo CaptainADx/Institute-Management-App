@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../components/style.css';
 import axios from 'axios';
-import {toast} from 'react-toastify';
+import {toast} from 'react-toastify';                 // shows pop-up msg on the screen.
 import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
     //Creating States 
@@ -38,7 +38,7 @@ const Login = () => {
                 toast.error('Something is Wrong');
                 console.log(err);
             })
-    }
+    } 
 
     return (
         <div className='signup-wrapper'>
@@ -48,7 +48,7 @@ const Login = () => {
                     
                 </div>
                 <div className='signup-right'>
-                    <form onSubmit={submitHandler} className='signup-form'>
+                    <form onSubmit={submitHandler} className='form'>
                         <h1>Login your account</h1>
                         <input required onChange={e => {setEmail(e.target.value)}} type='email' placeholder='Email' />
                         <input required onChange={e => {setPassword(e.target.value)}} type='password' placeholder='Password' />
