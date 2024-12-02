@@ -30,7 +30,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="outlet-area">
-                        <Outlet />
+                        <Outlet /> 
                     </div>
 
                 </div>

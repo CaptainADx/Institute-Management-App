@@ -73,7 +73,7 @@ router.get('/all-courses', checkAuth, (req,res)=>{
 
 // Get one course for particular ID
 
-router.get('/course-detail/:id', checkAuth, (req,res)=>{
+router.get('/course-details/:id', checkAuth, (req,res)=>{
     const token = req.headers.authorization.split(" ")[1]
     const verify = jwt.verify(token, process.env.TOKEN_SECRET_KEY)
 

@@ -12,6 +12,7 @@ import PaymentHistory from './components/PaymentHistory';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CourseDetails from './components/CourseDetails';
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
         { path: 'Add-Students', element: <AddStudents /> },
         { path: 'Fee-Collected', element: <FeeCollected /> },
         { path: 'Payment-History', element: <PaymentHistory /> },
+        { path: 'Course-Details/:id', element : <CourseDetails />},
       ],
     },
   ]);

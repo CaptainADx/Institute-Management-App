@@ -8,7 +8,7 @@ const courseSchema = new mongoose.Schema({
     startDate : {type:String, required:true},
     endDate : {type:String, required:true},
     imageId : {type:String, required:true},
-    imageURL : {type:String, required:true},
+    imageURL : {type:String, required:true}, 
     uId : {type:String, required:true},
 })
 
