@@ -67,11 +67,11 @@ const Students = () => {
               <tbody>
                 {studentList.map((student) => (
                   <tr key={student._id} className='student-row'>
-                    <td><img className='student-profile-pic' alt='student profile pic' src={student.imageURL} /></td>
-                    <td><p>{student.fullName}</p></td>
-                    <td><p>{student.phone}</p></td>
-                    <td><p>{student.email}</p></td>
-                    <td><p>{getCourseName(student.courseId)}</p></td> {/* Get the course name using helper function */}
+                    <td> <img className='student-profile-pic' alt='student profile pic' src={student.imageURL}/> </td>
+                    <td> <p>{student.fullName}</p> </td>
+                    <td> <p>{student.phone}</p> </td>
+                    <td> <p>{student.email}</p> </td>
+                    <td> <p>{getCourseName(student.courseId)}</p> </td> {/* Get the course name using helper function */}
                   </tr>
                 ))}
               </tbody>

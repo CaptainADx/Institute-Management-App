@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 const CourseDetails = () => {
+
+    const navigate = useNavigate();
 
     const [course, setCourses] = useState({});
     const [studentList, setStudentList] = useState([]);
@@ -45,24 +47,11 @@ const CourseDetails = () => {
                         </div>
                         <div>
                             <div className='button-container'>
-                                <button className='primary-btn'>Edit</button>
+                                <button className='primary-btn' onClick= {()=> {navigate('/dashboard/update-courses/'+course._id,{state:{course}})}}> Edit</button>
                                 <button className='secondary-btn'>Delete</button>
                             </div>
                             <h3>Course Description</h3>
                             <div className='course-description-container'>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
-                                <p>{course.description}</p>
                                 <p>{course.description}</p>
                             </div>
                         </div>
@@ -84,7 +73,7 @@ const CourseDetails = () => {
                             </thead>
                             <tbody>
                                 {studentList.map((student) => (
-                                    <tr className='student-row'>
+                                    <tr className='student-row' key={student.id || student.email}>
                                         <td><img className='student-profile-pic' alt='student profile pic' src={student.imageURL} /></td>
                                         <td><p>{student.fullName}</p></td>
                                         <td><p>{student.phone}</p></td>

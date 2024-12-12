@@ -34,6 +34,7 @@ const App = () => {
         { path: 'Fee-Collected', element: <FeeCollected /> },
         { path: 'Payment-History', element: <PaymentHistory /> },
         { path: 'Course-Details/:id', element : <CourseDetails />},
+        { path: 'Update-Courses/:id', element : <AddCourses />},
       ],
     },
   ]);
