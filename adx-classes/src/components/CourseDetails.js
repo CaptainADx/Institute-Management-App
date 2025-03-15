@@ -7,7 +7,7 @@ const CourseDetails = () => {
 
     const navigate = useNavigate();
 
-    const [course, setCourses] = useState({});
+    const [course, setCourses] = useState(null);
     const [studentList, setStudentList] = useState([]);
 
     const params = useParams();
@@ -24,7 +24,7 @@ const CourseDetails = () => {
         })
             .then(res => {
                 console.log(res.data);
-                setCourses(res.data.courses);
+                setCourses(res.data.course);
                 setStudentList(res.data.studentList);
             })
             .catch(err => {

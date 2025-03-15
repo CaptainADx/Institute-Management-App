@@ -64,7 +64,7 @@ const AddCourses = () => {
       setLoading(false);
       console.log(res.data);
       toast.success('Course updated successfully');
-      navigate('/dashboard/All-Courses', location.state.course._id);
+      navigate('/dashboard/All-Courses');
     })
     .catch(err => {
       setLoading(false);
@@ -75,7 +75,7 @@ const AddCourses = () => {
   }
 
   else {
-    axios.put('http://localhost:3001/course/add-course', formData, {
+    axios.post('http://localhost:3001/course/add-course', formData, {
       headers:{
         Authorization : 'Bearer '+localStorage.getItem('token'),
       }
@@ -84,7 +84,7 @@ const AddCourses = () => {
     setLoading(false);
     console.log(res.data);
     toast.success('Course Added successfully');
-    navigate('/dashboard/All-Courses', location.state.course._id);
+    navigate('/dashboard/All-Courses');
   })
   .catch(err => {
     setLoading(false);

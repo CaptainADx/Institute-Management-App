@@ -2,20 +2,19 @@ import React from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import Home from './components/Home'; // Import the respective components
+import Home from './components/Home'; 
 import Courses from './components/Courses';
 import AddCourses from './components/AddCourses';
 import Students from './components/Students';
 import AddStudents from './components/AddStudents';
 import FeeCollected from './components/FeeCollected';
 import PaymentHistory from './components/PaymentHistory';
-import { createBrowserRouter, RouterProvider} from 'react-router-dom';
-import { ToastContainer} from 'react-toastify';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CourseDetails from './components/CourseDetails';
 
 const App = () => {
-
   // Creating the routing paths...
   const myRouter = createBrowserRouter([
     { path: '/', element: <Login /> }, // Default route (base URL)
@@ -33,8 +32,8 @@ const App = () => {
         { path: 'Add-Students', element: <AddStudents /> },
         { path: 'Fee-Collected', element: <FeeCollected /> },
         { path: 'Payment-History', element: <PaymentHistory /> },
-        { path: 'Course-Details/:id', element : <CourseDetails />},
-        { path: 'Update-Courses/:id', element : <AddCourses />},
+        { path: 'Course-Details/:id', element: <CourseDetails /> },
+        { path: 'Update-Courses/:id', element: <AddCourses /> },
       ],
     },
   ]);
@@ -48,3 +47,4 @@ const App = () => {
 };
 
 export default App;
+
