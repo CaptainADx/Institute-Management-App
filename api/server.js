@@ -1,16 +1,14 @@
 const http = require('http');
-const port = 3001;
+const detectPort = require('detect-port').default;  // ✅ Fix import
 const app = require('./app');
-const server = http.createServer(app);
 
-server.listen(port, ()=>{
-    console.log('This app is running . . .');
+const DEFAULT_PORT = process.env.PORT || 3002;
+
+detectPort(DEFAULT_PORT).then((availablePort) => {
+    const server = http.createServer(app);
+    server.listen(availablePort, () => {
+        console.log(`Server started on port ${availablePort}`);
+    });
+}).catch((err) => {
+    console.error("Port detection error:", err);
 });
-
-
-
-// const express=require("express");
-
-// const app=express;
-
-// app.listen(8000,()=>console.log("server started at 8000"));

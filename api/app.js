@@ -3,23 +3,27 @@ const app = express();
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
-
 const userRoute = require('./routes/user');
 const studentRoute = require('./routes/student');
 const feeRoute = require('./routes/fee');
 const courseRoute = require('./routes/course');
+require('dotenv').config();
 
 // Connecting to MongoDB
-mongoose.connect('mongodb+srv://CaptainADx:7004388987ADx@captainadx.8l4ey.mongodb.net/?retryWrites=true&w=majority&appName=CaptainADx')
-.then(() => {
-    console.log("Connected to database");
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 })
-.catch(err => {
-    console.log(err);
-});
+    .then(() => console.log("Connected to database"))
+    .catch(err => console.log(err));
 
 app.use(express.json());
-app.use(cors());
+
+// ✅ FIX: Dynamic CORS based on frontend origin
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:3002",
+    credentials: true,
+}));
 
 // Handling multipart/form-data
 app.use(fileUpload({
@@ -41,3 +45,4 @@ app.use('*', (req, res) => {
 });
 
 module.exports = app;
+
