@@ -1,64 +1,79 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import '../components/style.css';
 import axios from 'axios';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+
 const Login = () => {
-    //Creating States 
-    const [email, setEmail] = useState('');
+    // Load email from localStorage (if available)
+    const [email, setEmail] = useState(localStorage.getItem('email') || '');
     const [password, setPassword] = useState('');
     const [isLoading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
+    // Check if user is already logged in (so it does not redirect to login page after reload)
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/dashboard', { replace: true }); // Auto redirect if token exists
+        }
+    }, [navigate]);
 
-    const navigate = useNavigate();  // using for routing to navigate to Login page after Signup Successfully
- 
-    
-    const submitHandler = (event) => {
-            event.preventDefault();
+    const submitHandler = async (event) => {
+        event.preventDefault();
+        setLoading(true);
 
-            setLoading(true);  //setting the loader to true to make it visible in submit button
+        try {
+            // Using 'await' to wait for the API response
+            const res = await axios.post('http://localhost:3001/user/login', {
+                email: email,
+                password: password,
+            }, { withCredentials: true });
 
-            axios.post('http://localhost:3001/user/login',{
-                email : email,
-                password : password,
-            })
-            .then(res => {
-                setLoading(false);   //When response is recieve it is set back to false to make it disappear
-                toast.success('Logged in');
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('fullName', res.data.fullName);
-                localStorage.setItem('email', res.data.email);
-                localStorage.setItem('imageURL', res.data.imageURL);
-                localStorage.setItem('imageId', res.data.imageId);
-                navigate('/dashboard');
-                console.log(res.data);
-            })
-            .catch(err => {
-                setLoading(false);   //When error is recieve it is set back to false to make it disappear
-                toast.error('Something is Wrong');
-                console.log(err);
-            })
-    }
+            setLoading(false);
+            toast.success('Logged in');
+
+            // Store token and user info in localStorage
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('fullName', res.data.fullName);
+            localStorage.setItem('email', res.data.email);
+            localStorage.setItem('imageURL', res.data.imageURL);
+            localStorage.setItem('imageId', res.data.imageId);
+
+            // Navigate to dashboard and refresh the page
+            navigate('/dashboard', { replace: true });
+
+            // Refresh the page after navigation to reflect changes
+            setTimeout(() => {
+                window.location.reload();
+            }, 100);
+
+        } catch (err) {
+            setLoading(false);
+            toast.error('Invalid credentials, please try again.');
+            console.error(err);
+        }
+    };
 
     return (
         <div className='signup-wrapper'>
             <div className='signup-box'>
                 <div className='signup-left'>
-                    <img className='logo1' alt='ADX-Logo' src={require('../assets/logo2.png')}/>
-                    
+                    <img className='logo1' alt='ADX-Logo' src={require('../assets/logo2.png')} />
                 </div>
                 <div className='signup-right'>
-                    <form onSubmit={submitHandler} className='signup-form'>
-                        <h1>Login your account</h1>
-                        <input required onChange={e => {setEmail(e.target.value)}} type='email' placeholder='Email' />
-                        <input required onChange={e => {setPassword(e.target.value)}} type='password' placeholder='Password' />
+                    <form onSubmit={submitHandler} className='form'>
+                        <h1>Login to your account</h1>
+                        <input required value={email} onChange={e => setEmail(e.target.value)} type='email' placeholder='Email' />
+                        <input required onChange={e => setPassword(e.target.value)} type='password' placeholder='Password' />
                         <button type='submit'>{isLoading && <i className="fa-solid fa-circle-notch fa-spin"></i>} Submit</button>
                         <Link className='signup-login-link' to='/signup'>Create an account</Link>
                     </form>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Login
+export default Login;
+

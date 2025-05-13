@@ -17,7 +17,7 @@ const SideNav = () => {
               <p className='brand-slogan'>Manage your app in easy way</p>
             </div>
         </div>
-
+ 
         <div className='menu-container'>
           <Link to='/dashboard/home' className={location.pathname === '/dashboard/home' ? 'menu-active-link' : 'menu-link'}><i className="dashboard-icons fa-solid fa-house"></i> Home</Link>
           <Link to='/dashboard/all-courses' className={location.pathname === '/dashboard/all-courses' ? 'menu-active-link' : 'menu-link'}><i className="dashboard-icons fa-solid fa-book"></i> All Courses</Link>
