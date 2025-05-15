@@ -55,7 +55,7 @@ const AddCourses = () => {
     }
 
     if(location.state){
-      axios.put('http://localhost:3001/course/'+location.state.course._id, formData, {
+      axios.put('http://localhost:3002/course/'+location.state.course._id, formData, {
         headers:{
           Authorization : 'Bearer '+localStorage.getItem('token'),
         }
@@ -75,7 +75,7 @@ const AddCourses = () => {
   }
 
   else {
-    axios.post('http://localhost:3001/course/add-course', formData, {
+    axios.post('http://localhost:3002/course/add-course', formData, {
       headers:{
         Authorization : 'Bearer '+localStorage.getItem('token'),
       }

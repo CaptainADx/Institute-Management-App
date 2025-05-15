@@ -17,7 +17,7 @@ const CourseDetails = () => {
     }, [])
 
     const getCourseDetails = () => {
-        axios.get(`http://localhost:3001/course/course-details/${params.id}`, {
+        axios.get(`http://localhost:3002/course/course-details/${params.id}`, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('token'),
             }

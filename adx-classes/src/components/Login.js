@@ -18,7 +18,7 @@ const Login = () => {
 
             setLoading(true);  //setting the loader to true to make it visible in submit button
 
-            axios.post('http://localhost:3000/user/login',{
+            axios.post('http://localhost:3002/user/login',{
                 email : email,
                 password : password,
             })
@@ -48,7 +48,7 @@ const Login = () => {
                     
                 </div>
                 <div className='signup-right'>
-                    <form onSubmit={submitHandler} className='signup-form'>
+                    <form onSubmit={submitHandler} className='form'>
                         <h1>Login your account</h1>
                         <input required onChange={e => {setEmail(e.target.value)}} type='email' placeholder='Email' />
                         <input required onChange={e => {setPassword(e.target.value)}} type='password' placeholder='Password' />

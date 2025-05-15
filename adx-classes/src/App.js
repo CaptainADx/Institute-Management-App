@@ -13,7 +13,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CourseDetails from './components/CourseDetails';
-require('dotenv').config();
 const App = () => {
   // Creating the routing paths...
   const myRouter = createBrowserRouter([

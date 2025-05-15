@@ -12,7 +12,7 @@ const Students = () => {
   }, []);
 
   const getStudentList = () => {
-    axios.get('http://localhost:3001/student/all-students', {
+    axios.get('http://localhost:3002/student/all-students', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       }
@@ -28,7 +28,7 @@ const Students = () => {
   };
 
   const getCourses = () => {
-    axios.get('http://localhost:3001/course/all-courses', {
+    axios.get('http://localhost:3002/course/all-courses', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       }

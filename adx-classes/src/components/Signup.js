@@ -30,7 +30,7 @@ const Signup = () => {
             formData.append('password', password);
             formData.append('image', image);
 
-            axios.post('http://localhost:3000/user/signup', formData)
+            axios.post('http://localhost:3002/user/signup', formData)
             .then(res => {
                 setLoading(false);   //When response is recieve it is set back to false to make it disappear
                 toast.success('Your account is created successfully');

@@ -12,7 +12,7 @@ const AddStudents = () => {
   },[])
   
   const getCourses = () => {
-    axios.get('http://localhost:3001/course/all-courses', {
+    axios.get('http://localhost:3002/course/all-courses', {
       headers : {
         Authorization : 'Bearer ' + localStorage.getItem('token'),
       }
@@ -53,7 +53,7 @@ const AddStudents = () => {
     formData.append('courseId', courseId);
     formData.append('image', image);
 
-    axios.post('http://localhost:3001/student/add-student', formData, {
+    axios.post('http://localhost:3002/student/add-student', formData, {
       headers:{
         Authorization : 'Bearer '+localStorage.getItem('token'),
       }
