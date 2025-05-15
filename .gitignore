@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 /api/.env/
 node_modules
+=======
+\api\.env
+node_modules 
+>>>>>>> TestBranch
