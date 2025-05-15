@@ -1,1 +1,1 @@
-.env
+git rm --cached .env
